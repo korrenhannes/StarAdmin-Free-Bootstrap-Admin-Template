@@ -58,7 +58,7 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
         $("body").addClass("purchase-banner-active");
         $("body").prepend('\
           <div class= "item-purchase-banner">\
-            <p class="banner-text">Get tons of UI components, Plugins, multiple layouts, 20+ sample pages, and more!            </p>\
+            <p class="banner-text">Create General Theme Use The Bot For Finding What is Going On In the Theme And Save Relevent Info To Dashbord</p>\
               <a href="https://www.bootstrapdash.com/product/star-admin-pro?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class= "banner-button btn btn-primary btn-icon">\
                 <i class="mdi mdi-cart"></i> Check Pro Version\
               </a>\
