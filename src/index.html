@@ -21,6 +21,74 @@
     <link rel="stylesheet" href="assets/css/demo_1/style.css">
     <!-- End Layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <style>
+      /* Existing styles from the chatbot interface */
+      body {
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+      #chat-container {
+          width: 100%;
+          height: 60vh;
+          background-color: white;
+          display: flex;
+          flex-direction: column;
+          border-radius: 20px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          margin-top: 20px;
+      }
+      #chatbox {
+          flex: 1;
+          overflow-y: auto;
+          padding: 20px;
+          border-bottom: 1px solid #ddd;
+          background-color: #f9f9f9;
+      }
+      .message {
+          margin: 10px 0;
+          word-wrap: break-word;
+          padding: 10px 15px;
+          border-radius: 20px;
+          max-width: 75%;
+      }
+      .user {
+          align-self: flex-end;
+          background-color: #0a84ff;
+          color: white;
+          margin-left: auto;
+      }
+      .bot {
+          align-self: flex-start;
+          background-color: #e5e5ea;
+          color: black;
+          margin-right: auto;
+      }
+      #input-container {
+          display: flex;
+          padding: 10px;
+          background-color: #f9f9f9;
+          border-top: 1px solid #ddd;
+      }
+      #input-container input {
+          flex: 1;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 20px;
+          margin-right: 10px;
+          font-size: 16px;
+          outline: none;
+      }
+      #input-container button {
+          padding: 10px 20px;
+          border: none;
+          border-radius: 20px;
+          background-color: #0a84ff;
+          color: white;
+          font-size: 16px;
+          cursor: pointer;
+          outline: none;
+      }
+    </style>
   </head>
   <body>
     <div class="container-scroller">
@@ -54,16 +122,6 @@
                   <div class="flag-icon-holder">
                     <i class="flag-icon flag-icon-fr"></i>
                   </div>French
-                </a>
-                <a class="dropdown-item">
-                  <div class="flag-icon-holder">
-                    <i class="flag-icon flag-icon-ae"></i>
-                  </div>Arabic
-                </a>
-                <a class="dropdown-item">
-                  <div class="flag-icon-holder">
-                    <i class="flag-icon flag-icon-ru"></i>
-                  </div>Russian
                 </a>
               </div>
             </li>
@@ -330,56 +388,16 @@
               <div class="col-md-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <div class="row">
-                      <div class="col-lg-3 col-md-6">
-                        <div class="d-flex">
-                          <div class="wrapper">
-                            <h3 class="mb-0 font-weight-semibold">32,451</h3>
-                            <h5 class="mb-0 font-weight-medium text-primary">Visits</h5>
-                            <p class="mb-0 text-muted">+14.00(+0.50%)</p>
-                          </div>
-                          <div class="wrapper my-auto ml-auto ml-lg-4">
-                            <canvas height="50" width="100" id="stats-line-graph-1"></canvas>
-                          </div>
+                    
+                    <!-- Chatbot Integration Start -->
+                    <div id="chat-container">
+                        <div id="chatbox"></div>
+                        <div id="input-container">
+                            <input type="text" id="user-input" placeholder="Type a message...">
+                            <button onclick="sendMessage()">Send</button>
                         </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
-                        <div class="d-flex">
-                          <div class="wrapper">
-                            <h3 class="mb-0 font-weight-semibold">15,236</h3>
-                            <h5 class="mb-0 font-weight-medium text-primary">Impressions</h5>
-                            <p class="mb-0 text-muted">+138.97(+0.54%)</p>
-                          </div>
-                          <div class="wrapper my-auto ml-auto ml-lg-4">
-                            <canvas height="50" width="100" id="stats-line-graph-2"></canvas>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
-                        <div class="d-flex">
-                          <div class="wrapper">
-                            <h3 class="mb-0 font-weight-semibold">7,688</h3>
-                            <h5 class="mb-0 font-weight-medium text-primary">Conversation</h5>
-                            <p class="mb-0 text-muted">+57.62(+0.76%)</p>
-                          </div>
-                          <div class="wrapper my-auto ml-auto ml-lg-4">
-                            <canvas height="50" width="100" id="stats-line-graph-3"></canvas>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
-                        <div class="d-flex">
-                          <div class="wrapper">
-                            <h3 class="mb-0 font-weight-semibold">1,553</h3>
-                            <h5 class="mb-0 font-weight-medium text-primary">Downloads</h5>
-                            <p class="mb-0 text-muted">+138.97(+0.54%)</p>
-                          </div>
-                          <div class="wrapper my-auto ml-auto ml-lg-4">
-                            <canvas height="50" width="100" id="stats-line-graph-4"></canvas>
-                          </div>
-                        </div>
-                      </div>
                     </div>
+                    <!-- Chatbot Integration End -->
                   </div>
                 </div>
               </div>
@@ -870,5 +888,173 @@
     <script src="assets/js/demo_1/dashboard.js"></script>
     <!-- End custom js for this page-->
     <script src="assets/js/shared/jquery.cookie.js" type="text/javascript"></script>
+    <!-- Chatbot JavaScript Functions -->
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            if (userInput.trim() === '') return;
+
+            appendMessage('user', userInput);  // Append user message on the right
+            document.getElementById('user-input').value = '';
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: userInput }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.type === 'timeline') {
+                    appendTimeline('bot', data.response, data.chatty_response);  // Append bot message on the left
+                } else {
+                    appendMessage('bot', data.response);  // Append bot message on the left
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                appendMessage('bot', 'There was an error processing your request.');  // Append error message on the left
+            });
+        }
+
+        function appendMessage(sender, message) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender);
+            messageElement.textContent = message;
+            document.getElementById('chatbox').appendChild(messageElement);
+            messageElement.scrollIntoView();
+        }
+
+        function appendTimeline(sender, data, chattyResponse) {
+            appendMessage(sender, chattyResponse);
+            const collapsibleElement = document.createElement('div');
+            collapsibleElement.classList.add('collapsible');
+
+            const header = document.createElement('div');
+            header.classList.add('collapsible-header');
+            header.textContent = 'Click to view more details';
+            header.onclick = () => {
+                const content = collapsibleElement.querySelector('.collapsible-content');
+                content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            };
+
+            const content = document.createElement('div');
+            content.classList.add('collapsible-content');
+
+            const timelineContainer = document.createElement('div');
+            timelineContainer.classList.add('uk-timeline');
+
+            const groupedData = groupByMonth(data);
+
+            Object.keys(groupedData).forEach(month => {
+                const monthGroup = document.createElement('div');
+                monthGroup.classList.add('timeline-month-group');
+
+                const monthHeader = document.createElement('div');
+                monthHeader.classList.add('month-header');
+                monthHeader.textContent = month;
+                monthHeader.onclick = () => {
+                    const groupContent = monthGroup.querySelectorAll('.uk-timeline-item');
+                    groupContent.forEach(item => {
+                        item.style.display = item.style.display === 'none' ? 'flex' : 'none';
+                    });
+                };
+
+                monthGroup.appendChild(monthHeader);
+
+                groupedData[month].forEach(item => {
+                    const timelineItem = document.createElement('div');
+                    timelineItem.classList.add('uk-timeline-item');
+
+                    const timelineIcon = document.createElement('div');
+                    timelineIcon.classList.add('uk-timeline-icon');
+
+                    const timelineBadge = document.createElement('span');
+                    timelineBadge.classList.add('uk-badge');
+
+                    timelineIcon.appendChild(timelineBadge);
+
+                    const timelineContent = document.createElement('div');
+                    timelineContent.classList.add('uk-timeline-content');
+
+                    const cardContainer = document.createElement('div');
+                    cardContainer.classList.add('uk-card-container', 'uk-overflow-auto');
+
+                    if (item.source === 'git') {
+                        cardContainer.classList.add('uk-card-git');
+                    } else if (item.source === 'email') {
+                        cardContainer.classList.add('uk-card-email');
+                    } else {
+                        cardContainer.classList.add('uk-card-doc');
+                    }
+
+                    const cardHeader = document.createElement('div');
+                    cardHeader.classList.add('uk-card-header');
+                    cardHeader.textContent = item.source.charAt(0).toUpperCase() + item.source.slice(1); // Only the source type
+
+                    const cardBody = document.createElement('div');
+                    cardBody.classList.add('uk-card-body');
+
+                    const shortTitle = item.title.split(' ').slice(0, 4).join(' ') + '...';
+                    const shortTitleElement = document.createElement('p');
+                    shortTitleElement.classList.add('short-title');
+                    shortTitleElement.innerHTML = `<strong>${shortTitle}</strong>`;
+
+                    const detailsElement = document.createElement('div');
+                    detailsElement.classList.add('details');
+                    detailsElement.style.display = 'none'; // Start with details hidden
+
+                    item.details.forEach(detail => {
+                        const cardText = document.createElement('p');
+                        cardText.innerHTML = `<strong>${detail.label}:</strong> ${detail.value}`;
+                        detailsElement.appendChild(cardText);
+                    });
+
+                    shortTitleElement.onclick = () => {
+                        detailsElement.style.display = detailsElement.style.display === 'none' ? 'block' : 'none';
+                        cardContainer.classList.toggle('expanded-card'); // Toggle the expanded card class
+                        adjustCardSpacing();
+                    };
+
+                    cardBody.appendChild(shortTitleElement);
+                    cardBody.appendChild(detailsElement);
+
+                    cardContainer.appendChild(cardHeader);
+                    cardContainer.appendChild(cardBody);
+                    timelineContent.appendChild(cardContainer);
+                    timelineItem.appendChild(timelineIcon);
+                    timelineItem.appendChild(timelineContent);
+                    monthGroup.appendChild(timelineItem);
+                });
+
+                timelineContainer.appendChild(monthGroup);
+            });
+
+            collapsibleElement.appendChild(header);
+            collapsibleElement.appendChild(content);
+            content.appendChild(timelineContainer);
+            document.getElementById('chatbox').appendChild(collapsibleElement);
+            collapsibleElement.scrollIntoView();
+        }
+
+        function groupByMonth(data) {
+            return data.reduce((acc, item) => {
+                const month = item.details.find(detail => detail.label === 'Date').value.substring(0, 7);
+                if (!acc[month]) {
+                    acc[month] = [];
+                }
+                acc[month].push(item);
+                return acc;
+            }, {});
+        }
+
+        function adjustCardSpacing() {
+            const cards = document.querySelectorAll('.uk-timeline-item');
+            cards.forEach(card => {
+                card.style.marginBottom = '10px';
+            });
+        }
+    </script>
   </body>
 </html>
