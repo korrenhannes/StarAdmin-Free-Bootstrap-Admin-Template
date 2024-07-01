@@ -854,6 +854,49 @@
                 card.style.marginBottom = '10px';
             });
         }
+
+      // Add dummy data to Documentation Statistics Overview chart
+      document.addEventListener("DOMContentLoaded", function() {
+        var ctx = document.getElementById('doc-statistics-overview').getContext('2d');
+        var docStatisticsOverview = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+              label: 'Emails Processed',
+              data: [65, 59, 80, 81, 56, 55, 40],
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+            }, {
+              label: 'Code Files Analyzed',
+              data: [28, 48, 40, 19, 86, 27, 90],
+              backgroundColor: 'rgba(153, 102, 255, 0.2)',
+              borderColor: 'rgba(153, 102, 255, 1)',
+              borderWidth: 1
+            }, {
+              label: 'Presentations Analyzed',
+              data: [18, 48, 77, 9, 100, 27, 40],
+              backgroundColor: 'rgba(255, 206, 86, 0.2)',
+              borderColor: 'rgba(255, 206, 86, 1)',
+              borderWidth: 1
+            }, {
+              label: 'Documents Analyzed',
+              data: [45, 25, 16, 36, 67, 18, 76],
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      });
     </script>
   </body>
 </html>
