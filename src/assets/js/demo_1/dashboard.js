@@ -526,27 +526,27 @@
         data: {
           labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
           datasets: [{
-              label: 'OVERDUE',
+              label: 'Mails',
               data: Marketing_data_1_1,
               backgroundColor: '#826af9',
               borderColor: '#826af9',
               borderWidth: 0
             }, {
-              label: 'SNOOZED',
+              label: 'Code Files',
               data: Marketing_data_1_2,
               backgroundColor: '#9e86ff',
               borderColor: '#9e86ff',
               borderWidth: 0
             },
             {
-              label: 'COMPLETED',
+              label: 'Documents',
               data: Marketing_data_1_3,
               backgroundColor: '#d0aeff',
               borderColor: '#d0aeff',
               borderWidth: 0
             },
             {
-              label: 'OVERDUE',
+              label: 'Presentations',
               data: Marketing_data_1_4,
               backgroundColor: '#f7d2ff',
               borderColor: '#f7d2ff',
